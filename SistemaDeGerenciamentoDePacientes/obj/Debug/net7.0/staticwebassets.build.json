@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "soWZWAfkhIkmKMC49BrYsjA6WCrXhkkgiftiHtXWmuk=",
+  "Source": "SistemaDeGerenciamentoDePacientes",
+  "BasePath": "_content/SistemaDeGerenciamentoDePacientes",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}
