@@ -96,6 +96,39 @@ namespace SistemaDeGerenciamentoDePacientes.Controllers
             return Ok(new { obj = listaRetorno });
         }
 
+        [HttpGet]
+        [Route("/getprodutos/{nome}")]
+
+        public async Task<IActionResult> GetProdutosNome(string nome)
+        {
+            List<Produtos> listaRetorno = new List<Produtos>();
+
+            using (SqlConnection connection = new SqlConnection(_connectionString))
+            {
+                connection.Open();
+
+                using (SqlCommand command = new SqlCommand($"SELECT id, nome, preco, quantidade, descricao, quantidade FROM Produtos WHERE nome LIKE '%{nome}%'", connection))
+                {
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            listaRetorno.Add(new Produtos()
+                            {
+                                id = Convert.ToInt32(reader["id"]),
+                                nome = reader["nome"].ToString(),
+                                preco = reader["preco"].ToString(),
+                                descricao = reader["descricao"].ToString(),
+                                quantidade = Convert.ToInt32(reader["quantidade"]),
+                            });
+                        }
+                    }
+                }
+            }
+
+            return Ok(new { obj = listaRetorno });
+        }
+
         [HttpPost]
         [Route("/addeditproduto")]
 

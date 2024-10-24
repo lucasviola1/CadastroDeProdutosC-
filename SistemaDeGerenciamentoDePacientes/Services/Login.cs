@@ -14,13 +14,13 @@ namespace SistemaDeGerenciamentoDePacientes.Services
             string result = "";
             try
             {
-                using (SqlCommand command = new SqlCommand($"SELECT email FROM Usuario WHERE email = '{email}' and senha = '{senha}'", connectionString))
+                using (SqlCommand command = new SqlCommand($"SELECT id FROM Usuario WHERE email = '{email}' and senha = '{senha}'", connectionString))
                 {
                     using (SqlDataReader reader = command.ExecuteReader())
                     {
                         if (reader.Read())
                         {
-                            result = reader["email"].ToString();
+                            result = reader["id"].ToString();
 
                             return result;
                         }
